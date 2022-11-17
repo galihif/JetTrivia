@@ -1,6 +1,7 @@
 package com.giftech.jettrivia.di
 
 import com.giftech.jettrivia.network.ApiService
+import com.giftech.jettrivia.repository.QuestionRepository
 import com.giftech.jettrivia.utils.Constants
 import dagger.Module
 import dagger.Provides
@@ -13,6 +14,10 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 object AppModule {
+
+    @Singleton
+    @Provides
+    fun provideQuestionRepository(api: ApiService) = QuestionRepository(api)
 
     @Singleton
     @Provides
